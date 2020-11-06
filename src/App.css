@@ -1,38 +1,108 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap");
+body {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: rgb(212, 198, 164);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.todo-container {
+  background: rgba(255, 198, 10, 0.39);
+  color: black;
+  width: 20em;
+  height: auto;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  border: 2px solid rgb(187, 172, 152);
+
+  margin-top: 3rem;
+}
+
+.title-container {
+  margin: 0.2em 0;
+  height: 3em;
+  text-align: center;
+  width: 100%;
+  border-bottom: 2px dotted rgba(255, 0, 0, 0.178);
+}
+.title-text {
+  font-family: "Luckiest Guy", cursive;
+  font-size: 2em;
+  color: rgba(255, 0, 0, 0.651);
+}
+
+.list-container {
+  margin-top: 0.5em;
+  display: flex;
+  flex-direction: column;
+  /* background-color: yellowgreen; */
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.add-text-container {
+  /* background-color: violet; */
+  border-bottom: 1px dotted rgba(255, 0, 0, 0.178);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.add-text-container i {
+  color: rgba(0, 100, 0, 0.452);
+  cursor: pointer;
+}
+input[type="text"] {
+  width: 85%;
+  height: 1.8em;
+  background-color: transparent;
+  border: 0px solid;
+  padding-left: 1em;
+  font-size: 1.3em;
+  font-family: "Gochi Hand", cursive;
+}
+input:focus {
+  outline: none;
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.btn:focus {
+  box-shadow: none !important;
+}
+
+::placeholder {
+  opacity: 0.5;
+}
+
+.add-items-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 1em;
+  /* background-color: darkorange; */
+  border-bottom: 1px dotted rgba(255, 0, 0, 0.199);
+}
+
+.item:hover .fa-trash {
+  display: block;
+}
+
+.item .item-text {
+  font-size: 1.3em;
+  color: rgb(107, 93, 93);
+  font-family: "Gochi Hand", cursive;
+}
+
+.item i {
+  padding-right: 0.4em;
+  padding-top: 0.2em;
+  color: rgba(255, 0, 0, 0.281);
+  cursor: pointer;
+  display: none;
 }
