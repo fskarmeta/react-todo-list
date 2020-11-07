@@ -22,6 +22,8 @@ function App() {
   function submitText(e) {
     e.preventDefault();
     setItem([...item, current]);
+    setCurrent({ text: "" });
+
     e.target.input.value = "";
   }
 
