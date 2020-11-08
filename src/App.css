@@ -80,6 +80,7 @@ input:focus {
   display: flex;
   flex-direction: column;
   width: 100%;
+  /* background-color: blue; */
 }
 .item {
   display: flex;
@@ -93,10 +94,22 @@ input:focus {
   display: block;
 }
 
+.item:hover .fa-square {
+  display: block;
+  color: rgba(0, 128, 0, 0.404);
+}
+
+.item:hover .fa-check-square {
+  color: rgba(0, 128, 0, 0.404);
+  display: block;
+}
+
 .item .item-text {
   font-size: 1.3em;
   color: rgb(107, 93, 93);
   font-family: "Gochi Hand", cursive;
+  /* text-decoration: line-through; */
+  /* background-color: blue; */
 }
 
 .item i {
@@ -105,4 +118,8 @@ input:focus {
   color: rgba(255, 0, 0, 0.281);
   cursor: pointer;
   display: none;
+}
+
+.icons {
+  display: flex;
 }
