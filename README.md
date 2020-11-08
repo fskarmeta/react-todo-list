@@ -3,4 +3,4 @@
 ## React,JS,Bootstrap,CSS
 
 ![Screenshot](./screenshot.png)
-![Alt Text](./gif.gif)
+![Alt Text](./todo.gif)
