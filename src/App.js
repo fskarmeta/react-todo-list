@@ -15,6 +15,7 @@ function App() {
 
   const [current, setCurrent] = useState([{ text: "" }]);
 
+  // Check a Task
   function setDone(i) {
     const newItems = item.map((item, idx) => {
       if (idx === i) {
@@ -25,6 +26,7 @@ function App() {
     setItem(newItems);
   }
 
+  //Uncheck a Task
   function setUnDone(i) {
     const newItems = item.map((item, idx) => {
       if (idx === i) {
@@ -35,10 +37,17 @@ function App() {
     setItem(newItems);
   }
 
+  // Delete all Tasks
+  function clearAll() {
+    setItem([]);
+  }
+
+  // Capture new Task Input
   function currentText(e) {
     setCurrent({ ...current, text: e.target.value });
   }
 
+  //Submit captured task to the list
   function submitText(e) {
     e.preventDefault();
     setItem([...item, current]);
@@ -47,6 +56,7 @@ function App() {
     e.target.input.value = "";
   }
 
+  //Delete individual Task from List
   function deleteItem(i) {
     console.log(i);
     let aux = [...item];
@@ -56,7 +66,7 @@ function App() {
   return (
     <>
       <Container>
-        <Title />
+        <Title clearAll={clearAll} />
         <ListContainer>
           <Form currentText={currentText} submitText={submitText} />
           <Items

@@ -33,6 +33,18 @@ body {
   color: rgba(255, 0, 0, 0.651);
 }
 
+.delete {
+  position: relative;
+  left: 22%;
+  bottom: 30%;
+  cursor: pointer;
+  color: rgba(107, 93, 93, 0.466);
+}
+
+.delete:hover {
+  color: rgba(255, 0, 0, 0.315);
+}
+
 .list-container {
   margin-top: 0.5em;
   display: flex;
