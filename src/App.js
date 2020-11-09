@@ -20,7 +20,6 @@ function App() {
   const urlAPI = "https://assets.breatheco.de/apis/fake/todos/";
 
   useEffect(() => {
-    // deleteUser();
     createUser();
     updateTasks();
     getTasks();
