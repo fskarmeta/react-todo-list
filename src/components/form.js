@@ -7,7 +7,7 @@ const Form = ({ currentText, submitText }) => {
           id="input"
           type="text"
           placeholder="What needs to be done?"
-          autocomplete="off"
+          autoComplete="off"
           onChange={(e) => currentText(e)}
         />
         <button className="btn">

@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Container from "./components/container";
 import Title from "./components/title";
 import ListContainer from "./components/listcontainer";
@@ -8,12 +8,90 @@ import Items from "./components/items";
 
 function App() {
   const [item, setItem] = useState([
-    { text: "Buy milk", done: false },
-    { text: "Take kids to school", done: false },
-    { text: "Go to the post office", done: false },
+    // { label: "Buy milk", done: false },
+    // { label: "Take kids to school", done: false },
+    // { label: "Go to the post office", done: false },
   ]);
 
-  const [current, setCurrent] = useState([{ text: "" }]);
+  const [current, setCurrent] = useState({ done: false, label: "" });
+
+  const [username, setUsername] = useState({ username: "fskarmeta" });
+
+  const urlAPI = "https://assets.breatheco.de/apis/fake/todos/";
+
+  useEffect(() => {
+    // deleteUser();
+    createUser();
+    updateTasks();
+    getTasks();
+  }, []);
+
+  // API Methods
+  // Create User
+
+  const createUser = () => {
+    fetch(`${urlAPI}user/${username.username}`, {
+      method: "POST",
+      body: JSON.stringify([]),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok !== true) {
+          response.json();
+        }
+      })
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
+  };
+
+  // Get API Object
+  const getTasks = () => {
+    fetch(`${urlAPI}user/${username.username}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setItem(data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  // Update List with API
+  const updateTasks = (array) => {
+    fetch(`${urlAPI}user/${username.username}`, {
+      method: "PUT",
+      body: JSON.stringify(array),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
+  };
+  // Delete User
+  const deleteUser = () => {
+    fetch(`${urlAPI}user/${username.username}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
+  };
 
   // Check a Task
   function setDone(i) {
@@ -23,6 +101,7 @@ function App() {
       }
       return item;
     });
+    updateTasks(newItems);
     setItem(newItems);
   }
 
@@ -34,33 +113,41 @@ function App() {
       }
       return item;
     });
+    updateTasks(newItems);
     setItem(newItems);
   }
 
+  ///////////////////////////////////////////////////////////////////////////
+  // LIST FUNCTIONALITIES
   // Delete all Tasks
   function clearAll() {
-    setItem([]);
+    let emptyArr = [];
+    setItem(emptyArr);
+    deleteUser();
   }
 
   // Capture new Task Input
   function currentText(e) {
-    setCurrent({ ...current, text: e.target.value });
+    setCurrent({ ...current, label: e.target.value, done: false });
   }
 
   //Submit captured task to the list
   function submitText(e) {
     e.preventDefault();
-    setItem([...item, current]);
-    setCurrent({ text: "" });
-
+    createUser();
+    let newItem = [...item, current];
+    setItem(newItem);
+    setCurrent({ label: "" });
     e.target.input.value = "";
+    updateTasks(newItem);
   }
 
   //Delete individual Task from List
   function deleteItem(i) {
-    console.log(i);
     let aux = [...item];
-    setItem([...aux.slice(0, i), ...aux.slice(i + 1, item.length)]);
+    let newAux = [...aux.slice(0, i), ...aux.slice(i + 1, item.length)];
+    setItem(newAux);
+    updateTasks(newAux);
   }
 
   return (

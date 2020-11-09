@@ -7,7 +7,7 @@ const Items = ({ item, deleteItem, setDone, setUnDone }) => {
             className="item-text"
             style={element.done ? { textDecoration: "line-through" } : null}
           >
-            {element.text}
+            {element.label}
           </spam>
           <div className="icons">
             <i
