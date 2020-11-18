@@ -20,8 +20,8 @@ function App() {
   const urlAPI = "http://localhost:5000/todos/";
 
   useEffect(() => {
-    createUser();
-    updateTasks();
+    // createUser();
+    // updateTasks();
     getTasks();
   }, []);
 
@@ -133,7 +133,7 @@ function App() {
   //Submit captured task to the list
   function submitText(e) {
     e.preventDefault();
-    createUser();
+    // createUser();
     let newItem = [...item, current];
     setItem(newItem);
     setCurrent({ label: "" });
