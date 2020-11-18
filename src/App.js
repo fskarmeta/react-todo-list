@@ -17,7 +17,7 @@ function App() {
 
   const [username, setUsername] = useState({ username: "fskarmeta" });
 
-  const urlAPI = "https://assets.breatheco.de/apis/fake/todos/";
+  const urlAPI = "http://localhost:5000/todos/";
 
   useEffect(() => {
     createUser();

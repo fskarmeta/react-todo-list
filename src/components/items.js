@@ -3,12 +3,12 @@ const Items = ({ item, deleteItem, setDone, setUnDone }) => {
     <div className="add-items-container">
       {item.map((element, index) => (
         <div className="item" key={index}>
-          <spam
+          <span
             className="item-text"
             style={element.done ? { textDecoration: "line-through" } : null}
           >
             {element.label}
-          </spam>
+          </span>
           <div className="icons">
             <i
               className="far fa-check-square"
